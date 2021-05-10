@@ -10,5 +10,13 @@ namespace ENTITY
     {
         public static Red Red = new Red();
         public static bool Continuar = true;
+
+        public static double Random()
+        {
+            var R = new Random();
+            var Negativo = Convert.ToBoolean(Math.Round(R.NextDouble()));
+            var Numero = R.NextDouble();
+            return Negativo ? Numero * -1 : Numero;
+        }
     }
 }

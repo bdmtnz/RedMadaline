@@ -20,8 +20,8 @@ namespace ENTITY
             Valor = AnteriorValor + (Rata * ErrorSalida * Entrada);
             //Valor = Valor > 1 ? 1 : Valor;
             //Valor = Valor < -1 ? -1 : Valor;
-            Valor = Valor > .5 ? .5 : Valor;
-            Valor = Valor < -.5 ? -.5 : Valor;
+            Valor = Valor > 1 ? Plataforma.Random() : Valor;
+            Valor = Valor < -1 ? Plataforma.Random() : Valor;
         }
     }
     
