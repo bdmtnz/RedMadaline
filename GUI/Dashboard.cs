@@ -250,7 +250,8 @@ namespace GUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Red = Plataforma.Red = new Red();
+            Plataforma.Red.ReiniciarRed();
+            Red = Plataforma.Red;
             ShowInfo(Red);
         }
 
