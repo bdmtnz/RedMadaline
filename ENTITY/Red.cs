@@ -418,6 +418,20 @@ namespace ENTITY
                 for (int j = 0; j < Neuronas[i]; j++)
                 {
                     Capas[i].Neuronas.Add(new Neurona(j));
+                    if(i == 0)
+                    {
+                        for (int p = 0; p < Patrones[0].Entradas.Count; p++)
+                        {
+                            Capas[i].Neuronas[j].Pesos.Valores.Add(new Peso(0));
+                        }
+                    }
+                    else
+                    {
+                        for (int p = 0; p < Capas[i - 1].Neuronas.Count; p++)
+                        {
+                            Capas[i].Neuronas[j].Pesos.Valores.Add(new Peso(0));
+                        }
+                    }
                 }
             }
             ReiniciarRed();
