@@ -20,9 +20,7 @@ namespace ENTITY
         {
             Neuronas = new List<Neurona>();
             Activacion = new Activacion(FUNCIONES.Sigmoide);
-        }
-
-       
+        }      
 
     }
 }

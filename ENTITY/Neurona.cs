@@ -14,10 +14,10 @@ namespace ENTITY
         public Pesos PesosTemp { get; set; }
         public Umbral Umbral { get; set; }
         public Umbral UmbralTemp { get; set; }
-        public bool Habilitada { get; set; }
         public bool Usada { get; set; }
+        public int Indice { get; set; }
 
-        public Neurona()
+        public Neurona(int Indice)
         {
             Pesos = new Pesos();
             PesosTemp = new Pesos();
@@ -25,7 +25,7 @@ namespace ENTITY
             SalidaTemp = new Salida();
             Umbral = new Umbral();
             UmbralTemp = new Umbral();
-            Habilitada = true;
+            this.Indice = Indice;
         }
 
         //public void CalcularSoma(Pesos Pesos, Patron Patron)
@@ -109,6 +109,13 @@ namespace ENTITY
         {
             //SOBREESCRIBIR PESOS TEMP EN PESOS
             Pesos.Valores = PesosTemp.Valores.Select(i => new Peso(i.Valor)).ToList();
+            //PesosTemp.Valores.Clear();
+        }
+
+        public void AceptaUmbrales()
+        {
+            //SOBREESCRIBIR PESOS TEMP EN PESOS
+            Umbral.Valor = UmbralTemp.Valor + 0;
             //PesosTemp.Valores.Clear();
         }
 

@@ -100,7 +100,7 @@ namespace DAL
                                         Red.Capas.Add(new Capa(i));
                                         for (int j = 0; j < Int32.Parse(Capas[i]); j++)
                                         {
-                                            Red.Capas[i].Neuronas.Add(new Neurona());
+                                            Red.Capas[i].Neuronas.Add(new Neurona(j));
                                         }
                                     }
                                     break;

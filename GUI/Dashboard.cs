@@ -145,10 +145,40 @@ namespace GUI
                 MessageBox.Show("Por favor ingrese un número de iteraciones valido");
                 return;
             }
+            CargarCapas();
             BtnIniciar.Visible = false;
             BtnPausa.Visible = true;
             RunTask();
             Abrir(new Graficador(Red));
+        }
+
+        private void CargarCapas()
+        {
+            var Neuronas = TbNeuronas.Text.Trim().Split(';').Select(x => Int32.Parse(x)).ToList();
+            var FuncionesText = TbFuncion.Text.Trim().Split(';');
+            var Funciones = new List<Activacion>();
+            foreach (var item in FuncionesText)
+            {
+                switch (item)
+                {
+                    case "L":
+                        Funciones.Add(new Activacion(FUNCIONES.Lineal));
+                        break;
+                    case "S":
+                        Funciones.Add(new Activacion(FUNCIONES.Sigmoide));
+                        break;
+                    case "T":
+                        Funciones.Add(new Activacion(FUNCIONES.TangenteHip));
+                        break;
+                    case "G":
+                        Funciones.Add(new Activacion(FUNCIONES.Gaussiana));
+                        break;
+                    default:
+                        Funciones.Add(new Activacion(FUNCIONES.Sigmoide));
+                        break;
+                }
+            }
+            Red.ReiniciarCapas(Neuronas, Funciones);
         }
 
         private async void RunTask()
@@ -250,7 +280,8 @@ namespace GUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Red = Plataforma.Red = new Red();
+            Plataforma.Red.ReiniciarRed();
+            Red = Plataforma.Red;
             ShowInfo(Red);
         }
 

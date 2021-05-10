@@ -9,7 +9,7 @@ namespace ENTITY
     public class Umbral
     {
         public double Valor { get; set; }
-        public double ValorTemp { get; set; }
+
         public Umbral()
         {
 
@@ -23,15 +23,12 @@ namespace ENTITY
         public void Entrenar(double AnteriorValor, double Rata, double ErrorSalida, double Entrada)
         {
             Valor = AnteriorValor + (Rata * ErrorSalida * Entrada);
-            Valor = Valor > 1 ? 1 : Valor;
-            Valor = Valor < -1 ? -1 : Valor;
+            //Valor = Valor > 1 ? 1 : Valor;
+            //Valor = Valor < -1 ? -1 : Valor;
+            Valor = Valor > .5 ? .5 : Valor;
+            Valor = Valor < -.5 ? -.5 : Valor;
         }
-        public void EntrenarTemp(double AnteriorValor, double Rata, double ErrorSalida, double Entrada)
-        {
-            ValorTemp = AnteriorValor + (Rata * ErrorSalida * Entrada);
-            ValorTemp = ValorTemp > 1 ? 1 : ValorTemp;
-            ValorTemp = ValorTemp < -1 ? -1 : ValorTemp;
-        }
+
     }
 
     
